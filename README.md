@@ -24,12 +24,20 @@ Incluidas en el requirements.txt
 
 ## Como Lanzar el servidor interno que viene con Flask
 **Solo se debe usar para el desarrollo de la aplicacion**
+### En el entorno virtual
 - Declarar la variable FLASK_APP en el fichero `env/bin/activate` en Linux/Mac
     - Añadir al final del fichero `export FLASK_APP="run.py"`
 - Salir del entorno virtual
     - `deactivate`
 - Volver a entrar en el entorno virtual, para ver reflejado los cambios en Linux/Mac 
     - `source env/bin/activate`
+- Lanzar el servidor de Flask
+    - `python3 -m flask run` o `flask run`
+### Directamente
+- Declarar la variable FLASK_APP
+    - En la terminal escribir `export FLASK_APP=run.py`
+- Declarar el tipo de enviroment, ambiente, que seria de desarrollo
+    - En la terminal escribir `export FLASK_ENV=development`
 - Lanzar el servidor de Flask
     - `python3 -m flask run` o `flask run`
 
