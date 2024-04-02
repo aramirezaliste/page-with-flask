@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__) # Instancia de la clase Flask
 
@@ -19,3 +19,18 @@ def show_post(slug):
 @app.route("/admin/post/<int:post_id>/") # Ruta UPDATE
 def post_form(post_id=None): # Se da el valor por defecto, por si la ruta es usada solo para POST
 	return render_template("admin/post_form.html", post_id=post_id)
+
+@app.route("/signup/", methods=["GET", "POST"]) # Tipos de CRUD que admite la ruta
+def show_signup_form():
+    if request.method == 'POST':
+		# request.form, obtiene la informacion enviada por el cliente en el formulario,
+		# en el input de atributo name="name"
+        name = request.form['name'] 
+        email = request.form['email']
+        password = request.form['password']
+		# request.args.get, obtiene la informacion enviada en la url.
+        next = request.args.get('next', None) # Si no se envia nada, queda como None
+        if next:
+            return redirect(next) # Si es True (Se pasa info. por la url), redirecciona hacia el "next" entregado
+        return redirect(url_for('index')) # Si el "post" es correcto, redirecciona al index
+    return render_template("signup_form.html") # Si no es "post", muestra el formulario
