@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__) # Instancia de la clase Flask
 
+# Secret key para la correcta funcionalidad de los formularios
+app.config['SECRET_KEY'] = '7110c8ae51a4b5af97be6534caef90e4bb9bdcb3380af008f90b23a5d1616bf319bc298105da20fe'
+
 posts = []
 
 # Creando las rutas y vistas para renderizar los templates
