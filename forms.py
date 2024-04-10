@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, TextAreaField
+from wtforms import StringField, SubmitField, PasswordField, TextAreaField, BooleanField
 from wtforms.validators import DataRequired, Email, Length
 
 #FlaskForm, es el objeto del que heredaran las clases creadas
@@ -17,3 +17,10 @@ class PostForm(FlaskForm):
     title_slug = StringField('Título slug', validators=[Length(max=128)])
     content = TextAreaField('Contenido')
     submit = SubmitField('Enviar')
+
+#Formulario para login xd
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Recuérdame')
+    submit = SubmitField('Login')
